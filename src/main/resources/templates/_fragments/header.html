@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Configuration</title>
+
+    <div th:fragment="header-css">
+
+        <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+        <link th:rel="stylesheet" th:href="@{assets/datatable/DataTables-1.10.24/css/dataTables.bootstrap4.css}"/>
+
+        <!--Search Builder-->
+        <link th:rel="stylesheet" th:href="@{assets/datatable/DateTime-1.0.3/css/dataTables.dateTime.css}"/>
+
+        <!--Buttons-->
+        <link th:rel="stylesheet" th:href="@{assets/datatable/Buttons-1.7.0/css/buttons.bootstrap4.css}"/>
+        <link th:rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+        <link th:rel="stylesheet" th:href="@{https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css}">
+
+        <link th:rel="stylesheet" th:href="@{css/all.css} "/>
+        <link th:rel="stylesheet" th:href="@{css/header.css}"/>
+        <link th:rel="stylesheet" th:href="@{css/custom.css}"/>
+    </div>
+</head>
+<body>
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-xl navbar-dark" style="background-color:#001f3f!important"></nav>
+</div>
+
+
+</body>
+</html>

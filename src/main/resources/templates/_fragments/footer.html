@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="footer">
+    <div class="container">
+        <footer>
+            <!-- this is footer -->
+            <script th:src="@{/webjars/jquery/jquery.js}"></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+
+            <script th:src="@{/assets/datatable/DataTables-1.10.24/js/jquery.dataTables.min.js}"></script>
+            <script th:src="@{/assets/datatable/DataTables-1.10.24/js/dataTables.bootstrap4.js}"></script>
+            <script th:src="@{/js/moment.min.js}"></script>
+            <script th:src="@{/assets/datatable/DateTime-1.0.3/js/dataTables.dateTime.js}"></script>
+
+            <!--Buttons-->
+            <script th:src="@{/assets/datatable/Buttons-1.7.0/js/dataTables.buttons.js}"></script>
+            <script th:src="@{/assets/datatable/Buttons-1.7.0/js/buttons.bootstrap4.js}"></script>
+            <script th:src="@{/assets/datatable/JSZip-2.5.0/jszip.js}"></script>
+            <script th:src="@{/assets/datatable/Buttons-1.7.0/js/buttons.html5.js}"></script>
+            <script th:src="@{/js/custom.js}"></script>
+            <link th:rel="stylesheet" th:href="@{https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js}">
+        </footer>
+    </div>
+</div>
+</body>
+</html>

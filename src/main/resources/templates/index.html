@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <title>Home</title>
+    <div th:replace="_fragments/header"></div>
+</head>
+<body>
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Запросы</title>
+    <div th:replace="_fragments/header :: header-css"></div>
+</head>
+<body>
+
+<div th:replace="_fragments/header :: header"></div>
+
+
+<div class="container-fluid" th:fragment="content">
+
+    <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requestModalLabel">Детали запроса</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#"  method="get" id="requestForm">
+                        <input type="hidden" id="requestId">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="identity">Идентификатор запроса</span>
+                                    <input type="text" class="form-control" aria-label="identity"
+                                           aria-describedby="sender" id="inputId" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="regNum">Регистрационный номер</span>
+                                    <input type="text" class="form-control" aria-label="regNum"
+                                           aria-describedby="regNum" id="inputRegNum" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="regDate">Дата регистрации</span>
+                                    <input type="text" class="form-control" aria-label="regDate"
+                                           aria-describedby="regDate" id="inputRegDate" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="sourceId">Номер исходного документа</span>
+                                    <input type="text" class="form-control" id="inputSourceId" aria-label="sourceId"
+                                           aria-describedby="sourceId" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="sourceDate">Дата исходного документа</span>
+                                    <input type="text" class="form-control" id="inputSourceDate" aria-label="sourceDate"
+                                           aria-describedby="sourceDate" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="deliveryForm">Форма доставки</span>
+                                    <input type="text" class="form-control" id="inputDeliveryForm" aria-label="deliveryForm"
+                                           aria-describedby="deliveryForm" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="correspondent">Корреспондент</span>
+                                    <input type="text" class="form-control" id="inputCorrespondent" aria-label="correspondent"
+                                           aria-describedby="correspondent" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="topic">Тема</span>
+                                    <textarea class="form-control" id="inputTopic" readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="description">Описание</span>
+                                    <textarea class="form-control" id="inputDescription" readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="dueDate">Срок исполнения</span>
+                                    <input type="text" class="form-control" id="inputDueDate" aria-label="dueDate"
+                                           aria-describedby="dueDate" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="access">Доступ</span>
+                                    <input type="text" class="form-control" id="inputAccess" aria-label="access"
+                                           aria-describedby="access" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inspection">Контроль</span>
+                                    <input type="text" class="form-control" id="inputInspection" aria-label="inspection"
+                                           aria-describedby="inspection" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="file">Файл</span>
+                                    <input type="text" class="form-control" id="inputFile" aria-label="inspection"
+                                           aria-describedby="inspection" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+<!--                        <div class="form-group">-->
+<!--                            <label for="formControlFile">Файл</label>-->
+<!--                            <input type="file" class="form-control-file" id="formControlFile">-->
+<!--                        </div>-->
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newRequestModal" tabindex="-1" role="dialog" aria-labelledby="newRequestModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newRequestModalLabel">Добавить запрос</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" th:action="@{/addRequest}"
+                          th:object="${request}" method="post" id="newRequestForm" enctype="multipart/form-data">
+                        <input type="hidden" id="inputRequestId" th:field="*{id}">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="newRegNum">Регистрационный номер</span>
+                                    <input type="text" class="form-control" id="inputNewRegNum" placeholder="Введите регистрационный номер"
+                                           aria-label="newRegNum" aria-describedby="basic-addon-newRegNum" th:field="*{registrationNumber}"
+                                           onfocus="this.value=''" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="newRegDate">Дата регистрации</span>
+                                    <input type="date" class="form-control" id="inputNewRegDate" placeholder="Введите дату регистрации"
+                                           aria-label="newRegDate" aria-describedby="basic-addon-newRegDate" th:field="*{registrationDate}"
+                                           onfocus="this.value=''" required>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="newSourceId">Номер исходного документа</span>
+                                    <input type="text" class="form-control" id="inputNewSourceId" placeholder="Введите номер исходного документа"
+                                           aria-label="newSourceId" aria-describedby="basic-addon-newSourceId" th:field="*{sourceFileId}"
+                                           onfocus="this.value=''" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="newSourceDate">Дата исходного документа</span>
+                                    <input type="date" class="form-control" id="inputNewSourceDate" placeholder="Введите дату регистрации исходного документа"
+                                           aria-label="newSourceDate" aria-describedby="basic-addon-newSourceDate" th:field="*{sourceDate}"
+                                           onfocus="this.value=''" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon-newDeliveryForm">Форма доставки</span>
+                                    <select class="form-control" required id="inputNewDeliveryForm" th:field="*{deliveryForm}">
+                                        <option value="0">Выберите форму доставки</option>
+                                        <option th:each="delivery : ${deliveryList}"
+                                                th:value="${delivery.getDeliveryForm()}" th:text="${delivery.name()}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon-newCorrespondent">Корреспондент</span>
+                                    <select class="form-control" required id="inputNewCorrespondent" th:field="*{correspondent}">
+                                        <option value="0">Выберите корреспондента</option>
+                                        <option th:each="correspondent : ${correspondentList}" th:value="${correspondent.getCorrespondent()}"
+                                                th:text="${correspondent.name()}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="newTopic">Тема</span>
+                                    <textarea class="form-control" id="inputNewTopic" th:field="*{topic}"
+                                              placeholder="Введите тему" required onfocus="this.value=''"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="newDescription">Описание</span>
+                                    <textarea class="form-control" id="inputNewDescription" th:field="*{description}"
+                                              placeholder="Введите описание" required onfocus="this.value=''"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon-dueDate">Срок исполнения</span>
+                                    <input type="date" class="form-control" id="inputNewDueDate"
+                                           placeholder="Введите срок исполнения"
+                                           aria-label="publishedYear" aria-describedby="basic-addon-dueDate" th:field="*{dueDate}"
+                                           onfocus="this.value=''" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon-newAccess">Доступ</span>
+                                    <select class="form-control" id="inputNewAccess" required th:field="*{access}">
+<!--                                        <option value="0">Доступ</option>-->
+                                        <option th:each="access : ${accessList}" th:value="${access.getAccess()}"
+                                                th:text="${access.name()}"></option>
+                                    </select>
+                                    <!--<label class="switch">
+                                        <input type="checkbox" class="form-control" id="inputNewAccess" required>
+                                        <span class="slider round"></span>
+                                    </label>-->
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon-newInspection">Контроль</span>
+                                    <select class="form-control" required id="inputNewInspection" th:field="*{inspection}">
+<!--                                        <option value="0">Контроль</option>-->
+                                        <option th:each="inspection : ${inspectionList}" th:value="${inspection.getInspection()}"
+                                                th:text="${inspection.name()}"></option>
+                                    </select>
+<!--                                    <div class="form-check form-check-inline">-->
+<!--                                        <input class="form-check-input" type="radio" th:field="*{inspection}" id="inputNewInspectionOne" value="Да">-->
+<!--                                        <label class="form-check-label" th:each="inspection : ${inspectionList}" th:value="${inspection.getInspection()}"-->
+<!--                                               for="inputNewInspectionOne" th:text="${inspection.name()}">Да</label>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-check form-check-inline">-->
+<!--                                        <input class="form-check-input" type="radio" th:field="*{inspection}" id="inputNewInspectionTwo" value="15">-->
+<!--                                        <label class="form-check-label" for="inputNewInspectionTwo">Нет</label>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="newRequestFormFile">Добавьте файл</label>
+                            <input type="file" required class="form-control-file" name="file"
+                                   id="newRequestFormFile" th:field="*{filePath}"
+                                   onfocus="this.value=''">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary" id="btnSubmit" name="newRequest">Сохранить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col mt-5 mb-5">
+            <table id="requests" class="table row-border table-responsive nowrap dt-colored-white-bg"
+                   style="width: 100%">
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <button id="addNewRequest" class="font-weight-bold btn btn-primary"
+                                type="button">Добавить запрос</button>
+                    </div>
+                </div>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Регистрационный номер</th>
+                    <th>Дата регистрации</th>
+                    <th>Наименование исходного файла</th>
+                    <th>Дата регистрации исходного файла</th>
+                    <th>Форма доставки</th>
+                    <th>Корреспондент</th>
+                    <th>Тема</th>
+                    <th>Описание</th>
+                    <th>Срок исполнения</th>
+                    <th>Доступ</th>
+                    <th>Контроль</th>
+                    <th>Файл</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:replace="_fragments/footer :: footer"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#addNewRequest').click(function () {
+                $('#newRequestModal').modal('show');
+            });
+
+            var table = $('#requests').DataTable({
+                dom: 'Bfrtip',
+                serverSide: false,
+                ajax: {
+                    url: '/ajax/requests',
+                    type: "POST",
+                    dataSrc: ''
+                },
+                columns: [
+                    {"data": "id", "width": "10%", "className": "text-primary font-weight-bold", orderable: true, searchable: true},
+                    {"data": "registrationNumber", "width": "10%", orderable: true, searchable: true},
+                    {"data": "registrationDate", "width": "10%", orderable: true, searchable: true},
+                    {"data": "sourceFileId", "width": "15%", orderable: false, searchable: true},
+                    {"data": "sourceDate", "width": "5%", orderable: true, searchable: true},
+                    {"data": "deliveryForm", "width": "10%", orderable: true, searchable: false,
+                        render: function (d) {
+                            switch (parseInt(d, 10)) {
+                                case(1):
+                                    return 'Курьер'
+                                case(2):
+                                    return 'Email'
+                                case(3):
+                                    return 'Телефонограмма'
+                            }
+                        }
+                    },
+                    {"data": "correspondent", "width": "5%", orderable: true, searchable: false,
+                        render: function (d) {
+                            switch (parseInt(d, 10)) {
+                                case(1):
+                                    return 'ЦБ'
+                                case(2):
+                                    return 'ГНИ'
+                                case(3):
+                                    return 'ТСЖ'
+                            }
+                        }
+                    },
+                    {"data": "topic", "width": "5%", orderable: true, searchable: false},
+                    {"data": "description", "width": "5%", orderable: true, searchable: false},
+                    {"data": "dueDate", "width": "5%", orderable: true, searchable: false},
+                    {"data": "access", "width": "5%", orderable: true, searchable: false,
+                        render: function (d) {
+                            switch (parseInt(d, 10)) {
+                                case(1):
+                                    return 'Нет'
+                                case(2):
+                                    return 'Да'
+                            }
+                        }
+                    },
+                    {"data": "inspection", "width": "5%", orderable: true, searchable: false,
+                        render: function (d) {
+                            switch (parseInt(d, 10)) {
+                                case(1):
+                                    return 'Нет'
+                                case(2):
+                                    return 'Да'
+                            }
+                        }
+                    },
+                    {"data": "filePath", "width": "5%", orderable: true, searchable: false},
+                ],
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'btn-light text-primary border-primary',
+                        titleAttr: 'Копировать',
+                        text: 'Копировать данные таблицы',
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'btn-light text-primary border-primary',
+                        titleAttr: 'Экспорт Excel',
+                        text: 'Excel экспорт данных из таблицы',
+                        exportOptions: {
+                            modifier: {
+                                page: 'all',
+                                search: 'none'
+                            }
+                        }
+                    },
+                    /*{
+                        extend: 'print',
+                        className: 'btn-light text-primary border-primary',
+                        titleAttr: 'Печать',
+                        text: 'Печать данных из таблицы',
+                        exportOptions: {
+                            modifier: {
+                                page: 'all'
+                            }
+                        }
+                    },*/
+                ]
+            });
+
+            table.on('click', 'tr', function() {
+                var data = table.row($(this).closest('tr')).data();
+                $('#inputId').val(data['id'])
+                $('#inputRegNum').val(data['registrationNumber'])
+                $('#inputRegDate').val(data['registrationDate'])
+                $('#inputSourceId').val(data['sourceFileId'])
+                $('#inputSourceDate').val(data['sourceDate'])
+                $('#inputDeliveryForm').val(data['deliveryForm'])
+                $('#inputCorrespondent').val(data['correspondent'])
+                $('#inputTopic').val(data['topic'])
+                $('#inputDescription').val(data['description'])
+                $('#inputDueDate').val(data['dueDate'])
+                $('#inputAccess').val(data['access'])
+                $('#inputInspection').val(data['inspection'])
+                $('#inputFile').val(data['filePath'])
+                $('#requestModal').modal('show');
+
+            });
+
+            // $(document).on('change', '#min,#max', function () {
+            //     table.ajax.reload();
+            // });
+
+        });
+    </script>
+</body>
+</html>
